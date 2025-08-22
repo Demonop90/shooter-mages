@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shooter Mages</title>
+  <style>
+    body { background:#000; color:#fff; text-align:center; font-family:sans-serif; }
+    canvas { background:#111; margin-top:20px; }
+    button { margin:5px; padding:10px; border:none; border-radius:8px; }
+  </style>
+</head>
+<body>
+  <h1>🎮 Shooter Mages 🎮</h1>
+  <p>Score: <span id="score">0</span></p>
+  <canvas id="gameCanvas" width="300" height="400"></canvas>
+  <br/>
+  <a href="https://x.com/DEMONGMR1" target="_blank">
+    <button style="background:#1DA1F2;color:#fff;">Follow @DEMONGMR1</button>
+  </a>
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+    let score = 0;
+
+    const bubbles = ["🦐","🧙","🪄","🔮"]; // shrimp, mage, warlock, orb
+    let grid = Array.from({length:8},()=>Array.from({length:6},()=>bubbles[Math.floor(Math.random()*bubbles.length)]));
+
+    function drawGrid(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      grid.forEach((row,r)=>{
+        row.forEach((cell,c)=>{
+          ctx.font="24px serif";
+          ctx.fillText(cell, c*40+10, r*40+30);
+        });
+      });
+    }
+    drawGrid();
+  </script>
+</body>
+</html>
